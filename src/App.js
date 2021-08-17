@@ -1,4 +1,4 @@
-import ExpenseItem from "./components/ExpenseItem";
+import Expenses from "./components/Expenses";
 
 function App() {
   const expenses = [
@@ -21,14 +21,11 @@ function App() {
       amount: 150000,
     },
   ];
-  let eList = [];
-  expenses.forEach((element) => {
-    eList.push(<ExpenseItem data={element}></ExpenseItem>);
-  });
+
   return (
     <div>
       <h2>Monthly expenses</h2>
-      {eList}
+      <Expenses expenses={expenses} />
     </div>
   );
 }
