@@ -1,13 +1,14 @@
 import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
-function Expenses(props) {
+import Card from "../UI/Card";
+const Expenses = (props) => {
   const expenses = props.expenses;
   const expensesList = [];
   expenses.forEach((element) => {
     expensesList.push(<ExpenseItem data={element}></ExpenseItem>);
   });
-  return <div className="expenses">{expensesList}</div>;
-}
+  return <Card className="expenses">{expensesList}</Card>;
+};
 
 // return (
 //   <div className="expenses">

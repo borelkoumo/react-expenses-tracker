@@ -1,5 +1,5 @@
 import "./ExpenseDate.css";
-function ExpenseDate(props) {
+const ExpenseDate = (props) => {
   //   const options = {
   //     month: "long",
   //     day: "2-digit",
@@ -15,6 +15,6 @@ function ExpenseDate(props) {
       <div className="expense-date__day">{day}</div>
     </div>
   );
-}
+};
 
 export default ExpenseDate;
