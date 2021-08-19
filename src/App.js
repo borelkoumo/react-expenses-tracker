@@ -1,31 +1,36 @@
 import React, { useState } from "react";
 import Expenses from "./components/Expenses/Expenses";
-import ExpensesFilter from "./components/Expenses/ExpensesFilter";
-import NewExpense from "./components/Expenses/NewExpense/NewExpense";
+import ToogleNewExpense from "./components/Expenses/NewExpense/ToogleNewExpense";
 const DUMMY_EXPENSES = [
   {
     id: 1,
-    title: "Car",
-    date: new Date(2021, 2, 28),
-    amount: 5000,
+    title: "Car 2021",
+    date: new Date(2021, 1, 28),
+    amount: Number.parseFloat(500),
   },
   {
     id: 2,
-    title: "Toilet paper",
-    date: new Date(2021, 2, 12),
-    amount: 100,
+    title: "Toilet paper 2019",
+    date: new Date(2019, 2, 12),
+    amount: Number.parseFloat(100),
   },
   {
     id: 3,
-    title: "Repairing house",
-    date: new Date(2021, 5, 5),
-    amount: 150000,
+    title: "Toilet paper 2020",
+    date: new Date(2020, 3, 12),
+    amount: Number.parseFloat(100),
+  },
+  {
+    id: 4,
+    title: "Repairing house 2021",
+    date: new Date(2021, 4, 5),
+    amount: Number.parseFloat(150),
   },
 ];
 const App = () => {
   const [appData, setAppData] = useState({
     expenses: DUMMY_EXPENSES,
-    selectedYear : undefined
+    selectedYear: undefined,
   });
 
   const _onNewExpenseHandler = (data) => {
@@ -40,11 +45,11 @@ const App = () => {
     });
   };
 
-
   return (
     <div>
-      <NewExpense onNewExpenseHandler={_onNewExpenseHandler}></NewExpense>
-      <ExpensesFilter years={ } onSelectChangeHandler={ }/>
+      <ToogleNewExpense
+        onNewExpenseHandler={_onNewExpenseHandler}
+      ></ToogleNewExpense>
       <Expenses expenses={appData.expenses} />
     </div>
   );

@@ -2,58 +2,43 @@ import { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = (props) => {
-  // const [title, setTitle] = useState("");
-  // const [amount, setAmount] = useState(0);
-  // const [date, setDate] = useState("");
-
   const defaultDate = _getDefaultDate();
-  const onNewExpenseHandler = props.onNewExpenseHandler;
+  const { onNewExpenseHandler, onCancelNewExpenseHandler } = props;
 
   const [formData, setFormData] = useState({
     title: "",
-    amount: "",
+    amount: 0,
     date: defaultDate,
   });
   const _titleChangeHandler = (e) => {
-    // setTitle(e.target.value);
-    // setFormData({
-    //   ...formData,
-    //   title: e.target.value,
-    // });
     setFormData((previousState) => {
       return { ...previousState, title: e.target.value };
     });
   };
   const _amountChangeHandler = (e) => {
-    // setAmount(e.target.value)
-    // setFormData({
-    //   ...formData,
-    //   amount: e.target.value,
-    // });
     setFormData((previousState) => {
       return { ...previousState, amount: e.target.value };
     });
   };
   const _dateChangeHandler = (e) => {
-    // setDate(e.target.value);
-    // setFormData({
-    //   ...formData,
-    //   date: e.target.value,
-    // });
     setFormData((previousState) => {
       return { ...previousState, date: e.target.value };
     });
   };
 
   const _onSubmitHandler = (e) => {
-    // debugger;
     e.preventDefault();
     const expenseData = {
       title: formData.title,
-      amount: formData.amount,
+      amount: Number.parseFloat(formData.amount),
       date: new Date(formData.date),
     };
     onNewExpenseHandler(expenseData);
+  };
+
+  const _onCancelNewExpenseHandler = (e) => {
+    e.preventDefault();
+    onCancelNewExpenseHandler();
   };
 
   function _getDefaultDate() {
@@ -73,7 +58,6 @@ const ExpenseForm = (props) => {
     return displayDate;
   }
 
-  // debugger;
   return (
     <form onSubmit={_onSubmitHandler}>
       <div className="new-expense__controls">
@@ -111,6 +95,9 @@ const ExpenseForm = (props) => {
       </div>
       <div className="new-expense__actions">
         <button type="submit">Submit</button>
+        <button type="button" onClick={_onCancelNewExpenseHandler}>
+          Cancel
+        </button>
       </div>
     </form>
   );
