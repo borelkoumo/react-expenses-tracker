@@ -66,7 +66,7 @@ const ExpenseForm = (props) => {
       })
       .split("/")
       .reverse();
-    if (displayDate[1].length == 1) {
+    if (displayDate[1].length === 1) {
       displayDate[1] = "0" + displayDate[1];
     }
     displayDate = displayDate.join("-");
